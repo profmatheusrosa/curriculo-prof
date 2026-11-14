@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Monograma MR</title>
+  <rect width="128" height="128" rx="8" fill="#194e76" />
+  <path d="M20 96V31h10l25 34 24-34h10v65H78V54L55 84 32 54v42z" fill="#fffefd" />
+  <path d="M96 31h12v66H96z" fill="#8bc7f4" />
+</svg>
