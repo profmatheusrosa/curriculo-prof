@@ -1,4 +1,4 @@
-import { Download, ExternalLink, Github, Languages, Linkedin, Moon, Printer, Sun } from "lucide-react";
+import { Download, Github, Languages, Linkedin, Moon, Printer, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 
@@ -9,12 +9,11 @@ const resumes: Record<Language, {
   pageTitle: string; skipLink: string; runningHead: string; documentIndex: string; sealLabel: string;
   toolbarLabel: string;
   role: string; profilesLabel: string; location: string; profileLabel: string; profileSummary: string;
-  sections: { teaching: string; academic: string; technology: string; education: string; skills: string; languages: string; transiarte: string; sources: string };
+  sections: { teaching: string; academic: string; technology: string; education: string; skills: string; languages: string };
   courseLabel: string; teachingExperiences: Experience[]; academicExperiences: Experience[];
   technologyExperiences: Experience[]; education: { degree: string; school: string; date: string }[];
   competencyAreas: { title: string; description: string }[]; language: { name: string; proficiency: string; credential: string };
-  transiarte: { label: string; title: string; body: string; context: string };
-  sources: { label: string; url: string }[]; footer: { description: string; updated: string };
+  footer: { description: string; updated: string };
   controls: { dark: string; light: string; print: string; language: string; hint: string };
 }> = {
   pt: {
@@ -24,14 +23,14 @@ const resumes: Record<Language, {
     sealLabel: "Monograma Matheus Rosa", role: "DOCÊNCIA EM COMPUTAÇÃO E TECNOLOGIA DA INFORMAÇÃO",
     profilesLabel: "Perfis profissionais", location: "Brasília, DF", profileLabel: "PERFIL",
     profileSummary: "Professor de Tecnologia da Informação na Escola Técnica de Brasília desde 2019. Atua com Banco de Dados, Engenharia de Software, Programação Orientada a Objetos com Java e Gestão de TI, integrando fundamentos e atividades práticas. Sua trajetória reúne formação em Computação, experiência profissional em tecnologia e atuação anterior em tutoria universitária e inclusão digital.",
-    sections: { teaching: "Experiência docente", academic: "Tutoria, extensão e projetos acadêmicos", technology: "Experiência profissional em tecnologia", education: "Formação acadêmica", skills: "Competências", languages: "Idiomas", transiarte: "Transiarte: ensino e inclusão digital", sources: "Fontes sobre o projeto" },
+    sections: { teaching: "Experiência docente", academic: "Tutoria, extensão e projetos acadêmicos", technology: "Experiência profissional em tecnologia", education: "Formação acadêmica", skills: "Competências", languages: "Idiomas" },
     courseLabel: "Disciplinas ministradas",
     teachingExperiences: [{ period: "2019 — atual", role: "Professor de TI", organization: "Escola Técnica de Brasília", entries: ["Integra fundamentos teóricos e atividades práticas no ensino de tecnologia da informação."], courses: ["Banco de Dados", "Engenharia de Software", "Programação Orientada a Objetos com Java", "Gestão de TI"] }],
     academicExperiences: [
-      { period: "03/2012 — 08/2012", role: "Projeto Campus Online — jornal universitário", organization: "Universidade de Brasília", entries: ["Colaborou na implementação de funcionalidades e na gestão de conteúdo do site Campus Online.", "Administrou o sistema de gerenciamento de conteúdo Joomla."] },
-      { period: "03/2012 — 08/2012", role: "Projeto de Inclusão Digital — voluntariado", organization: "Departamento de Educação", entries: ["Ensinou competências práticas de informática a pessoas leigas, incluindo edição de textos, navegação na internet, e-mail e mensagens instantâneas."] },
-      { period: "03/2011 — 07/2011", role: "Tutor de Introdução à Ciência da Computação", organization: "Universidade de Brasília", entries: ["Preparou e corrigiu tarefas da disciplina de linguagem C.", "Criou o ambiente da disciplina e organizou conteúdos no Moodle."] },
-      { period: "03/2010 — 08/2010", role: "Projeto de Inclusão Digital — Transiarte · serviço comunitário", organization: "Escola Regional", entries: ["Ensinou competências práticas de informática, incluindo uso de e-mail e edição de vídeo, abordando temas sociais."] },
+      { period: "2012", role: "Projeto Campus Online — jornal universitário", organization: "Universidade de Brasília", entries: ["Colaborou na implementação de funcionalidades e na gestão de conteúdo do site Campus Online.", "Administrou o sistema de gerenciamento de conteúdo Joomla."] },
+      { period: "2012", role: "Projeto de Inclusão Digital — voluntariado", organization: "Departamento de Educação", entries: ["Ensinou competências práticas de informática a pessoas leigas, incluindo edição de textos, navegação na internet, e-mail e mensagens instantâneas."] },
+      { period: "2011", role: "Tutor de Introdução à Ciência da Computação", organization: "Universidade de Brasília", entries: ["Preparou e corrigiu tarefas da disciplina de linguagem C.", "Criou o ambiente da disciplina e organizou conteúdos no Moodle."] },
+      { period: "2010", role: "Projeto de Inclusão Digital — Transiarte · serviço comunitário", organization: "Escola Regional", entries: ["Ensinou competências práticas de informática, incluindo uso de e-mail e edição de vídeo, abordando temas sociais."] },
     ],
     technologyExperiences: [
       { period: "2026 — atual", role: "Técnico Bancário — TI", organization: "CAIXA", entries: ["Presta suporte técnico a desenvolvedores, orientando sobre ferramentas, tecnologias e padrões de desenvolvimento adotados pela organização.", "Contribui para a padronização de práticas e soluções de software."] },
@@ -50,16 +49,6 @@ const resumes: Record<Language, {
       { title: "Práticas e gestão de TI", description: "Engenharia de Software, metodologias ágeis, ITIL e gestão de tecnologia." },
     ],
     language: { name: "Inglês", proficiency: "Avançado / fluente", credential: "TOEFL" },
-    transiarte: {
-      label: "Experiência de 2010 e contexto pedagógico", title: "Inclusão digital por meio da criação",
-      body: "A experiência de inclusão digital em serviço comunitário numa Escola Regional (03/2010–08/2010) foi o Transiarte, conforme esclarecido pelo titular. A atividade registrada envolveu ensino de informática, e-mail e edição de vídeo, abordando temas sociais.",
-      context: "Na literatura, o PROEJA-Transiarte é descrito como uma proposta de articulação entre Educação de Jovens e Adultos e Educação Profissional, com produção artística digital colaborativa e pesquisa-ação. As fontes abaixo contextualizam o projeto; os detalhes da atuação individual acima vêm do currículo histórico fornecido pelo titular.",
-    },
-    sources: [
-      { label: "Artigo na revista HOLOS (2014)", url: "https://www2.ifrn.edu.br/ojs/index.php/HOLOS/article/view/1972" },
-      { label: "Dissertação no Repositório Institucional da UnB (2009)", url: "https://repositorio.unb.br/handle/10482/8657" },
-      { label: "Fórum EJA do Distrito Federal — TransiArte/PROEJA", url: "https://forumeja.org.br/df/transiarte-proeja/" },
-    ],
     footer: { description: "Matheus Rosa · Currículo digital", updated: "Atualizado em novembro de 2026" },
     controls: { dark: "Modo escuro", light: "Modo claro", print: "Imprimir / Salvar PDF", language: "Alternar para inglês", hint: "Use “Imprimir / Salvar PDF” para gerar uma cópia do currículo." },
   },
@@ -70,14 +59,14 @@ const resumes: Record<Language, {
     sealLabel: "Matheus Rosa monogram", role: "COMPUTING AND INFORMATION TECHNOLOGY EDUCATION",
     profilesLabel: "Professional profiles", location: "Brasília, Brazil", profileLabel: "PROFILE",
     profileSummary: "Information Technology instructor at Escola Técnica de Brasília since 2019. Teaches Database Systems, Software Engineering, Object-Oriented Programming with Java, and IT Management, integrating foundations with practical activities. His background combines a degree in Computing, professional technology experience, university tutoring, and digital inclusion work.",
-    sections: { teaching: "Teaching experience", academic: "Tutoring, outreach and academic projects", technology: "Technology experience", education: "Education", skills: "Competencies", languages: "Languages", transiarte: "Transiarte: teaching and digital inclusion", sources: "Project sources" },
+    sections: { teaching: "Teaching experience", academic: "Tutoring, outreach and academic projects", technology: "Technology experience", education: "Education", skills: "Competencies", languages: "Languages" },
     courseLabel: "Courses taught",
     teachingExperiences: [{ period: "2019 — present", role: "IT Instructor", organization: "Escola Técnica de Brasília", entries: ["Integrates theoretical foundations with hands-on activities in information technology education."], courses: ["Database Systems", "Software Engineering", "Object-Oriented Programming with Java", "IT Management"] }],
     academicExperiences: [
-      { period: "Mar 2012 — Aug 2012", role: "Campus Online Project — university newspaper", organization: "University of Brasília", entries: ["Collaborated on feature implementation and content management for the Campus Online website.", "Managed the Joomla content management system."] },
-      { period: "Mar 2012 — Aug 2012", role: "Digital Inclusion Project — Volunteer", organization: "Department of Education", entries: ["Taught practical computer skills to laypeople, including text editing, internet browsing, email, and instant messaging."] },
-      { period: "Mar 2011 — Jul 2011", role: "Tutor, Introduction to Computer Science", organization: "University of Brasília", entries: ["Prepared and corrected assignments for the C programming course.", "Created the course environment and organized materials in Moodle."] },
-      { period: "Mar 2010 — Aug 2010", role: "Digital Inclusion Project — Transiarte · Community Service", organization: "Escola Regional", entries: ["Taught practical computer skills, including email and video editing, while addressing social topics."] },
+      { period: "2012", role: "Campus Online Project — university newspaper", organization: "University of Brasília", entries: ["Collaborated on feature implementation and content management for the Campus Online website.", "Managed the Joomla content management system."] },
+      { period: "2012", role: "Digital Inclusion Project — Volunteer", organization: "Department of Education", entries: ["Taught practical computer skills to laypeople, including text editing, internet browsing, email, and instant messaging."] },
+      { period: "2011", role: "Tutor, Introduction to Computer Science", organization: "University of Brasília", entries: ["Prepared and corrected assignments for the C programming course.", "Created the course environment and organized materials in Moodle."] },
+      { period: "2010", role: "Digital Inclusion Project — Transiarte · Community Service", organization: "Escola Regional", entries: ["Taught practical computer skills, including email and video editing, while addressing social topics."] },
     ],
     technologyExperiences: [
       { period: "2026 — present", role: "Técnico Bancário — TI (banking IT role)", organization: "CAIXA", entries: ["Provides technical support to developers and guidance on the organization’s development tools, technologies, and standards.", "Contributes to consistent software practices and solutions."] },
@@ -96,16 +85,6 @@ const resumes: Record<Language, {
       { title: "IT practice and management", description: "Software Engineering, agile methods, ITIL, and technology management." },
     ],
     language: { name: "English", proficiency: "Advanced / fluent", credential: "TOEFL" },
-    transiarte: {
-      label: "2010 experience and pedagogical context", title: "Digital inclusion through creative practice",
-      body: "The community-service digital inclusion experience at Escola Regional (a regional school, Mar–Aug 2010) was Transiarte, as clarified by the profile owner. The recorded activity involved teaching computer skills, email, and video editing while addressing social topics.",
-      context: "In the literature, PROEJA-Transiarte is described as an approach connecting Youth and Adult Education with vocational education through collaborative digital art and action research. The sources below provide project context; the individual role described above comes from the historical resume supplied by the profile owner.",
-    },
-    sources: [
-      { label: "HOLOS journal article (2014)", url: "https://www2.ifrn.edu.br/ojs/index.php/HOLOS/article/view/1972" },
-      { label: "University of Brasília institutional repository dissertation (2009)", url: "https://repositorio.unb.br/handle/10482/8657" },
-      { label: "Federal District EJA Forum — TransiArte/PROEJA", url: "https://forumeja.org.br/df/transiarte-proeja/" },
-    ],
     footer: { description: "Matheus Rosa · Digital resume", updated: "Updated November 2026" },
     controls: { dark: "Dark mode", light: "Light mode", print: "Print / Save PDF", language: "Switch to Portuguese", hint: "Use “Print / Save PDF” to create a copy of this resume." },
   },
@@ -186,12 +165,6 @@ export default function Home() {
         {copy.competencyAreas.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}
       </div></section>
 
-      <section className="doc-section transiarte-section" id="transiarte"><h2>{copy.sections.transiarte}</h2>
-        <aside className="transiarte-card"><span className="transiarte-label">{copy.transiarte.label}</span><h3>{copy.transiarte.title}</h3>
-          <p>{copy.transiarte.body}</p><p>{copy.transiarte.context}</p><h4>{copy.sections.sources}</h4>
-          <ul className="source-links">{copy.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}<ExternalLink aria-hidden="true" /></a></li>)}</ul>
-        </aside>
-      </section>
       <section className="doc-section languages-section" id="idiomas"><h2>{copy.sections.languages}</h2><div className="language-document-card"><strong>{copy.language.name}</strong><span>{copy.language.proficiency}</span><small>{copy.language.credential}</small></div></section>
       <footer className="sheet-footer"><span>{copy.footer.description}</span><span>{copy.footer.updated}</span></footer>
     </main>

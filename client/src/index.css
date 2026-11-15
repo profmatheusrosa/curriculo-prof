@@ -462,79 +462,6 @@ button {
   line-height: 1.48;
 }
 
-.transiarte-section {
-  margin-top: 7mm;
-}
-
-.transiarte-card {
-  border-left: 2px solid var(--accent);
-  background: var(--paper-soft);
-  padding: 4mm 5mm;
-}
-
-.transiarte-label {
-  color: var(--accent);
-  font-size: .58rem;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.transiarte-card h3 {
-  margin: .35rem 0 .6rem;
-  color: var(--ink);
-  font-family: "Source Serif 4", serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: -.025em;
-}
-
-.transiarte-card p {
-  margin: .5rem 0;
-  color: var(--ink-soft);
-  font-size: .69rem;
-  line-height: 1.52;
-}
-
-.transiarte-card h4 {
-  margin: .85rem 0 .35rem;
-  color: var(--ink);
-  font-size: .62rem;
-  font-weight: 800;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-.source-links {
-  display: grid;
-  gap: .35rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.source-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: .32rem;
-  color: var(--accent);
-  font-size: .64rem;
-  font-weight: 700;
-  line-height: 1.4;
-  text-decoration: none;
-}
-
-.source-links a:hover,
-.source-links a:focus-visible {
-  text-decoration: underline;
-}
-
-.source-links svg {
-  width: .75rem;
-  height: .75rem;
-  flex: 0 0 auto;
-}
-
 .languages-section {
   margin-top: 6mm;
 }
@@ -586,7 +513,6 @@ button {
 }
 
 .document-tool:focus-visible,
-.source-links a:focus-visible,
 .head-meta a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -713,10 +639,6 @@ button {
 
   .competency-panels article:last-child {
     border-bottom: 0;
-  }
-
-  .transiarte-card {
-    padding: .9rem 1rem;
   }
 
   .language-document-card {
@@ -884,23 +806,9 @@ button {
     line-height: 1.35;
   }
 
-  .transiarte-card,
   .language-document-card,
   .sheet-footer {
     break-inside: avoid-page;
-  }
-
-  .transiarte-card {
-    padding: 3mm 4mm;
-    background: #f4f6f3;
-  }
-
-  .transiarte-card p {
-    font-size: 7.4pt;
-  }
-
-  .source-links a {
-    font-size: 7pt;
   }
 
   .sheet-footer {
