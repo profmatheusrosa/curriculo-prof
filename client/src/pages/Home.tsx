@@ -177,17 +177,14 @@ export default function Home() {
       <section className="profile-summary" aria-labelledby="profile-heading"><span id="profile-heading">{copy.profileLabel}</span><p>{copy.profileSummary}</p></section>
 
       <section className="doc-section experience-section" id="docencia"><h2>{copy.sections.teaching}</h2><ExperienceList items={copy.teachingExperiences} courseLabel={copy.courseLabel} /></section>
+      <section className="doc-section" id="formacao"><h2>{copy.sections.education}</h2><div className="education-doc-list">
+        {copy.education.map((item) => <article key={item.degree}><div><h3>{item.degree}</h3><p>{item.school}</p></div><span className="education-date">{item.date}</span></article>)}
+      </div></section>
       <section className="doc-section experience-section" id="tutoria-extensao"><h2>{copy.sections.academic}</h2><ExperienceList items={copy.academicExperiences} academic courseLabel={copy.courseLabel} /></section>
       <section className="doc-section experience-section" id="experiencia-tecnologia"><h2>{copy.sections.technology}</h2><ExperienceList items={copy.technologyExperiences} courseLabel={copy.courseLabel} /></section>
-
-      <div className="resume-layout">
-        <section className="doc-section" id="formacao"><h2>{copy.sections.education}</h2><div className="education-doc-list">
-          {copy.education.map((item) => <article key={item.degree}><div><h3>{item.degree}</h3><p>{item.school}</p></div><time>{item.date}</time></article>)}
-        </div></section>
-        <section className="doc-section" id="competencias"><h2>{copy.sections.skills}</h2><div className="skill-doc-list">
-          {copy.competencyAreas.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}
-        </div></section>
-      </div>
+      <section className="doc-section" id="competencias"><h2>{copy.sections.skills}</h2><div className="competency-panels">
+        {copy.competencyAreas.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}
+      </div></section>
 
       <section className="doc-section transiarte-section" id="transiarte"><h2>{copy.sections.transiarte}</h2>
         <aside className="transiarte-card"><span className="transiarte-label">{copy.transiarte.label}</span><h3>{copy.transiarte.title}</h3>
